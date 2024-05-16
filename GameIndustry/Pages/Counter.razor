@@ -8,11 +8,27 @@
 
 <button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
 
+<GameListTabel Games="games"></GameListTabel>
+
 @code {
     private int currentCount = 0;
+    List<Game> games;
 
     private void IncrementCount()
     {
         currentCount++;
+    }
+
+    protected override void OnInitialized()
+    {
+        games = new List<Game>()
+        {
+            new Game()
+            {
+             Name = "Test counter 1",
+             Genre = "Test",
+             ReleaseDate = new DateTime(2018,11,19)
+            }
+        };
     }
 }
