@@ -34,31 +34,10 @@
 
 @code {
 
-    private List<Game> Games { get; set; }
+    [Parameter] public List<Game> Games { get; set; }
 
     protected async override Task OnInitializedAsync()
     {
-        await Task.Delay(5000);
-        Games = new List<Game>()
-        {
-            new Game()
-            {
-             Name = "Farming Simulator 2019",
-             Genre = "Simulator",
-             ReleaseDate = new DateTime(2018,11,19)
-            },
-            new Game()
-            {
-             Name = "The Witcher 3",
-             Genre = "Action/RPG",
-             ReleaseDate = new DateTime(2015,05,18)
-            },
-            new Game()
-            {
-             Name = "Destroy All Humans",
-             Genre = "Action/RPG",
-             ReleaseDate = new DateTime(2020,07,28)
-            }
-        };
+        
     }
 }
