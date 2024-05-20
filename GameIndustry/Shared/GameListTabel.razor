@@ -9,52 +9,19 @@
             </tr>
         </thead>
         <tbody>
-            @if (Games == null)
-            {
-                @* <tr>LOADING DATA...</tr> *@
-                @if (NullList != null)
-                {
-                    @NullList
-                }
-                else
-                {
-                    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.icegif.com%2Floading-11%2F&psig=AOvVaw2qCzkSJBR4khSgAJ7bkpDM&ust=1716315213211000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCKjPwNbqnIYDFQAAAAAdAAAAABAp" height="200"/>
-                }
-            }
-            else if (Games.Count == 0)
-            {
-                @if (NullList != null)
-                {
-                    @EmptyList
-                }
-                else
-                {
-                    <img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fdribbble.com%2Fshots%2F2246883-Collection-list-is-empty&psig=AOvVaw1PjrW-66qKdEelU0WYxiV6&ust=1716315302129000&source=images&cd=vfe&opi=89978449&ved=0CBIQjRxqFwoTCIiv6YDrnIYDFQAAAAAdAAAAABAJ" height="200"/>
-                }
-
-            }
-            else
-            {
-                @foreach (var item in Games)
-                {
-                    @* <tr>
-            <td>@item.Name</td>
-            <td>@item.Genre</td>
-            <td>@item.ReleaseDate.ToString("dd.MM.yyyy")</td>
-            </tr> *@
-                    <IndividualGame Game="item" IsTable="true" DisplayButtons=displayButtons DeleteGame="DeleteTheGame"></IndividualGame>
-                }
-            }
-
+            <GenericList ListOfItems="Games">
+                <ItemTemplate Context="game" >
+                    <IndividualGame Game="game" IsTable=true DisplayButtons=displayButtons DeleteGame="DeleteTheGame" />
+                </ItemTemplate>
+            </GenericList>
         </tbody>
     </table>
 </div>
 
 @code {
     [Parameter] public List<Game> Games { get; set; } = new List<Game>();
-    [Parameter] public RenderFragment NullList { get; set; }
-    [Parameter] public RenderFragment EmptyList { get; set; }
-    public bool displayButtons { get; set; }
+
+    public bool displayButtons { get; set; } = true;
     protected async override Task OnInitializedAsync()
     {
     }
