@@ -12,9 +12,16 @@
     </div>
 </div>
 
-<GameListTabel Games="games"/>
+<GameListTabel Games="games">
+@*     <NullList>
+        <tr><span style="text-align:center; color:red;font-weight:bolder">Element Loading...</span></tr>
+    </NullList>
+    <EmptyList>
+        <tr><span style="text-align:center; color:blue;font-weight:bolder">No items in array....</span></tr>
+    </EmptyList> *@
+</GameListTabel>
 
-<IndividualGame Game="oneGameToShow" IsTable=false DisplayButtons=true SwitchGame="ShowNewGame"></IndividualGame>
+@* <IndividualGame Game="oneGameToShow" IsTable=false DisplayButtons=true SwitchGame="ShowNewGame"></IndividualGame> *@
 
 
 @code{
@@ -22,33 +29,33 @@
     Random rnd;
     Game oneGameToShow;
 
-    protected override void OnInitialized()
-    {
-        games = new List<Game>()
-        {
-            new Game()
-            {
-             Name = "Farming Simulator 2019",
-             Genre = "Simulator",
-             ReleaseDate = new DateTime(2018,11,19)
-            },
-            new Game()
-            {
-             Name = "The Witcher 3",
-             Genre = "Action/RPG",
-             ReleaseDate = new DateTime(2015,05,18)
-            },
-            new Game()
-            {
-             Name = "Destroy All Humans",
-             Genre = "Action/RPG",
-             ReleaseDate = new DateTime(2020,07,28)
-            }
-        };
+    // protected override void OnInitialized()
+    // {
+    //     games = new List<Game>()
+    //     {
+    //         new Game()
+    //         {
+    //          Name = "Farming Simulator 2019",
+    //          Genre = "Simulator",
+    //          ReleaseDate = new DateTime(2018,11,19)
+    //         },
+    //         new Game()
+    //         {
+    //          Name = "The Witcher 3",
+    //          Genre = "Action/RPG",
+    //          ReleaseDate = new DateTime(2015,05,18)
+    //         },
+    //         new Game()
+    //         {
+    //          Name = "Destroy All Humans",
+    //          Genre = "Action/RPG",
+    //          ReleaseDate = new DateTime(2020,07,28)
+    //         }
+    //     };
 
-        rnd = new Random(DateTime.Now.Millisecond);
-        oneGameToShow = games[rnd.Next(0,games.Count)];
-    }
+    //     rnd = new Random(DateTime.Now.Millisecond);
+    //     oneGameToShow = games[rnd.Next(0,games.Count)];
+    // }
 
     void ShowNewGame()
     {
