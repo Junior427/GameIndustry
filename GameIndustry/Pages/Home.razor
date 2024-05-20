@@ -12,9 +12,10 @@
     </div>
 </div>
 
-<GameListTabel Games="games"/>
+<GameListTabel Games="games">
+</GameListTabel>
 
-<IndividualGame Game="oneGameToShow" IsTable=false DisplayButtons=true SwitchGame="ShowNewGame"></IndividualGame>
+ <IndividualGame Game="oneGameToShow" IsTable=false DisplayButtons=true SwitchGame="ShowNewGame"></IndividualGame>
 
 
 @code{
@@ -22,8 +23,9 @@
     Random rnd;
     Game oneGameToShow;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
+        await Task.Delay(2000);
         games = new List<Game>()
         {
             new Game()
