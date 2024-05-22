@@ -17,6 +17,11 @@
 
  <IndividualGame Game="oneGameToShow" IsTable=false DisplayButtons=true SwitchGame="ShowNewGame"></IndividualGame>
 
+ <div class="row">
+     <div class="col text-center">
+         <button @onclick="AddNewGame" class="btn btn-success">Add new game</button>
+     </div>
+ </div>
 
 @code{
     List<Game> games;
@@ -25,7 +30,7 @@
 
     protected override async Task OnInitializedAsync()
     {
-        await Task.Delay(2000);
+        //await Task.Delay(2000);
         games = new List<Game>()
         {
             new Game()
@@ -71,6 +76,10 @@
         else
             return new Game() { Name = "No items in array", ReleaseDate = DateTime.Now};
 
-            return tempGame;
+        return tempGame;
+    }
+    void AddNewGame()
+    {
+        games.Add(new Game() { Name = "Game for test", Genre = "test genre", ReleaseDate = DateTime.Now});
     }
 }

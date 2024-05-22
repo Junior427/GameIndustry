@@ -22,13 +22,31 @@
     [Parameter] public List<Game> Games { get; set; } = new List<Game>();
 
     public bool displayButtons { get; set; } = true;
-    protected async override Task OnInitializedAsync()
-    {
-    }
+
 
     void DeleteTheGame(Game game)
     {
         Games.Remove(game);
     }
+    /*************************************************************/
+    protected override void OnInitialized()
+    { // инициализации компонента, перед отрисовки компонената
+        Console.WriteLine($"1.OnInitializedAsync(). Games.Count:{Games?.Count}");
+    }
 
-}
+    protected override void OnParametersSet()
+    { // после метода OnInitialized, и/или при изменении Параметров
+        Console.WriteLine($"2.OnParametersSet(). Games.Count:{Games?.Count}");
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    { // после отрисовки компонента
+        Console.WriteLine($"3.OnAfterRender(). First render ? {firstRender}");
+    }
+
+    protected override bool ShouldRender()
+    {
+        return true;
+    }
+        //return false; //запретить перересовывать компонент
+        }
