@@ -15,7 +15,7 @@
     </div>
 </div>
 
-<GameListTabel Games="games">
+<GameListTabel Games="games" @ref=gameList>
 </GameListTabel>
 
  <IndividualGame Game="oneGameToShow" IsTable=false DisplayButtons=true SwitchGame="ShowNewGame"></IndividualGame>
@@ -31,11 +31,14 @@
     Random rnd;
     Game oneGameToShow;
 
+
+    GameListTabel gameList;
+
     protected override async Task OnInitializedAsync()
     {
         //await Task.Delay(2000);
         games = repository.GetAllGames();
-        
+
 
         rnd = new Random(DateTime.Now.Millisecond);
         oneGameToShow = games[rnd.Next(0,games.Count)];
@@ -64,6 +67,8 @@
     }
     void AddNewGame()
     {
-        games.Add(new Game() { Name = "Game for test", Genre = "test genre", ReleaseDate = DateTime.Now});
+        // games.Add(new Game() { Name = "Game for test", Genre = "test genre", ReleaseDate = DateTime.Now});
+        //gameList.Games.Add(new Game() { Name = "Game for test", Genre = "test genre", ReleaseDate = DateTime.Now });
+        //gameList.DoSomething();
     }
 }
