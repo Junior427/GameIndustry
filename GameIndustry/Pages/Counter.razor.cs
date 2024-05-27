@@ -8,7 +8,10 @@ namespace GameIndustry.Pages
         public SingletonService singleton { get; set; }
         [Inject]
         public TransientService transirnt { get; set; }
-
+        [CascadingParameter(Name ="Color")]
+        public string Color { get; set; }
+        [CascadingParameter(Name ="Size")]
+        public string Size { get; set; }
         private int currentCount = 0;
 
         private void IncrementCount()
