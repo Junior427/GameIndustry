@@ -1,5 +1,16 @@
-﻿<div class="table-responsive">
-    <table class="table table-striped">
+﻿<div class="row mb-3">
+    <div class="col">
+        <select class="btn btn-toolbar border dropdown-toggle" @onchange=ChangeTableStyle>
+            <option selected value="">Choose Table Stylr</option>
+            @foreach (var item in AppStyles.TableStyle)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+</div>
+<div class="table-responsive">
+    <table class="table @currentTableStyle">
         <thead class="thead-light">
             <tr>
                 <th>Name</th>
@@ -22,10 +33,12 @@
 </div>
 
 @code {
+    [CascadingParameter]
+    public AppStyles AppStyles{ get; set; }
     [Parameter] public List<Game> Games { get; set; } = new List<Game>();
 
     public bool displayButtons { get; set; } = true;
-
+    string currentTableStyle = "table-striped";
 
     void DeleteTheGame(Game game)
     {
@@ -69,5 +82,9 @@
     {
         confirmation.Hide();
         gameToBeDeleted = null;
+    }
+    void ChangeTableStyle(ChangeEventArgs currentItem)
+    {
+        currentTableStyle = currentItem.Value.ToString();
     }
 }
