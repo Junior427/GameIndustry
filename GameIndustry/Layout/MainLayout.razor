@@ -12,17 +12,21 @@
         </div>
 
         <article class="content px-4">
-            <CascadingValue Value="Color" Name="Color">
-                <CascadingValue Value="Size" Name="Size">
-                    @Body
-                </CascadingValue>
-            </CascadingValue>
+@*             <CascadingValue Value="Color" Name="Color">
+                <CascadingValue Value="Size" Name="Size"> *@
+                    <CascadingValue Value="appStyle">
+                        @Body
+                    </CascadingValue>
+                   
+                @* </CascadingValue>
+            </CascadingValue> *@
 @*             <GameIndustry.Pages.Counter></GameIndustry.Pages.Counter> *@
         </article>
     </main>
 </div>
 
 @code{
-string Color = "blue";
-string Size = "65px";
+    string Color = "blue";
+    string Size = "65px";
+    AppStyles appStyle = new AppStyles();
 }
